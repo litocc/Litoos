@@ -1,0 +1,62 @@
+﻿<Page x:Class="Litools.View.Pages.M2gPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Litools.View.Pages" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:mvvm="http://www.galasoft.ch/mvvmlight" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="510" d:DesignWidth="820"
+      Title="M2gPage" DataContext="{Binding Source={StaticResource Locator}, Path=M2gPage}">
+    <Grid ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Border Name="bo1" CornerRadius="20" Width="200" Height="300" AllowDrop="True" BorderThickness="2" Background="White">
+                <Border.BorderBrush>
+                    <DrawingBrush Viewport="0,0,4,4" ViewportUnits="Absolute" TileMode="Tile">
+                        <DrawingBrush.Drawing>
+                            <DrawingGroup>
+                                <GeometryDrawing Brush="#FF673AB7">
+                                    <GeometryDrawing.Geometry>
+                                        <GeometryGroup>
+                                            <RectangleGeometry Rect="0,0,50,50" />
+                                            <RectangleGeometry Rect="50,50,50,50" />
+                                        </GeometryGroup>
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                            </DrawingGroup>
+                        </DrawingBrush.Drawing>
+                    </DrawingBrush>
+                </Border.BorderBrush>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Drop">
+                        <mvvm:EventToCommand PassEventArgsToCommand="True" Command="{Binding getVideoPath}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <TextBlock Text="将文件拖到此方框" FontSize="20" Foreground="#444" TextAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+        </Grid>
+        <Grid Grid.Column="1">
+            <StackPanel Orientation="Vertical" Margin="30,0">
+                <StackPanel Orientation="Horizontal" Margin="0,70,0,0">
+                    <TextBox Text="{Binding Uv.VideoPath}" FontSize="16" Foreground="#444" Width="280" VerticalAlignment="Bottom"/>
+                    <Button Style="{StaticResource MaterialDesignFloatingActionLightButton}" ToolTip="MaterialDesignFloatingActionLightButton"
+                            Background="Transparent" BorderBrush="#FFC7B6E7" Margin="20,0,0,0" Width="50" Height="50" Command="{Binding SelectFilePath}">
+                        <materialDesign:PackIcon Kind="FolderOpenOutline" Height="35" Width="35" />
+                    </Button>
+                </StackPanel>
+                <Button Style="{StaticResource MaterialDesignRaisedButton}" Height="50" materialDesign:ButtonAssist.CornerRadius="10"
+                        ToolTip="MaterialDesignRaisedButton with Round Corners" Width="150" Margin="0,30,0,0" Command="{Binding convertCommand}">
+                    <materialDesign:PackIcon Kind="PlayOutline" Height="40" Width="60" />
+                </Button>
+                <TextBlock Text="转化进度：" FontSize="17"  Margin="0,30,0,0" FontWeight="Bold" Foreground="#333"/>
+                <ProgressBar Value="{Binding Ml.Pcetime}" Height="10" Maximum="{Binding Ml.TotalTime}" Margin="0,10,0,0"/>
+                <!-- long hand form for setting the message -->
+                <!-- simplest form -->
+                <materialDesign:Snackbar Message="转化完成！" IsActive="{Binding Ml.ShowDia}" x:Name="SnackbarOne" Margin="0,200,0,0" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
