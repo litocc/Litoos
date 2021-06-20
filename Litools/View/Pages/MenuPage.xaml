@@ -20,11 +20,22 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center">
             <Button Style="{StaticResource MaterialDesignFlatButton}" ToolTip="MaterialDesignFlatButton"
-                    materialDesign:ButtonAssist.CornerRadius="10" Width="120" Height="120" Background="Aquamarine"
+                    materialDesign:ButtonAssist.CornerRadius="10" Width="120" Height="120" Background="Transparent"
                     Command="{Binding MenuItemSelectCommand}" CommandParameter="View/Pages/M2gPage.xaml">
                 <StackPanel Orientation="Vertical">
-                    <Image Source="/Litools;component/Resources/m2g.png"/>
+                    <TextBlock Text="&#xe61f;" FontFamily="/Litools;component/Resources/#iconfont" FontSize="70" Foreground="#2CC3D3" Margin="0,0,0,10"/>
                     <TextBlock Text="视频转Gif" Foreground="#444" FontWeight="Bold" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
+            <Button Style="{StaticResource MaterialDesignFlatButton}" ToolTip="MaterialDesignFlatButton"
+                    materialDesign:ButtonAssist.CornerRadius="10" Width="120" Height="120" Background="Transparent"
+                    Command="{Binding MenuItemSelectCommand}" CommandParameter="View/Pages/RenamefilesPage.xaml">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="&#xe64e;" FontFamily="/Litools;component/Resources/#iconfont" FontSize="70" Foreground="#FFD664" Margin="0,0,0,10"/>
+                    <TextBlock Text="文件重命名" Foreground="#444" FontWeight="Bold" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Button>
         </StackPanel>

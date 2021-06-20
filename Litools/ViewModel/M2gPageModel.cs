@@ -5,6 +5,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -23,7 +24,7 @@ namespace Litools.ViewModel
         public static string ffmpegtool = Environment.CurrentDirectory + @"\ffmpeg.exe";
 
         //输出路径
-        public static string imgFile = @"C:\Users\lito\Desktop\test.gif";
+        public static string gifFile = "";
 
         private UserVideo _uv = new UserVideo();
         public UserVideo Uv
@@ -64,7 +65,9 @@ namespace Litools.ViewModel
                 {
                     //得到视频路径
                     Uv.VideoPath = ((Array)e.Data.GetData(DataFormats.FileDrop)).GetValue(0).ToString();
-                    //Console.WriteLine(path);
+
+                    gifFile = Path.GetDirectoryName(Uv.VideoPath) + @"\output.gif";  //得到视频所在文件夹路径
+                    Ml.Pcetime = 0;
                 }
             }
             catch
@@ -93,8 +96,11 @@ namespace Litools.ViewModel
                 return;
             }
             Uv.VideoPath = openFileDialog.FileName;  //得到视频路径
+            gifFile = Path.GetDirectoryName(Uv.VideoPath) + @"\output.gif";  //得到视频所在文件夹路径
+            Ml.Pcetime = 0;
             //MessageBox.Show(txtFile);
         });
+
 
         public async Task VideoToGif()
         {
@@ -104,7 +110,7 @@ namespace Litools.ViewModel
             p.StartInfo.FileName = ffmpegtool;
             //转化gif动画
             //string strArg = "-i " + Uv.VideoPath + " -y -f gif -loglevel quiet " + imgFile;  //-loglevel quiet：黑框框不显示输出信息
-            string strArg = "-i " + Uv.VideoPath + " -y -f gif " + imgFile;
+            string strArg = "-i " + Uv.VideoPath + " -y -f gif " + gifFile;
             //Console.WriteLine("strArg: " + strArg);
             await Task.Run(() =>
             {
@@ -122,6 +128,7 @@ namespace Litools.ViewModel
 
             }
 
+        //根据输出获取转换进度
         private void Output(object sendProcess, DataReceivedEventArgs output)
         {
             if (!String.IsNullOrEmpty(output.Data))

@@ -45,6 +45,7 @@ namespace Litools.ViewModel
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<MenuPageModel>();
             SimpleIoc.Default.Register<M2gPageModel>();
+            SimpleIoc.Default.Register<RenamefilesPageModel>();
         }
 
         public MainViewModel Main
@@ -67,6 +68,13 @@ namespace Litools.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<M2gPageModel>();
+            }
+        }
+        public RenamefilesPageModel RenamefilesPage
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<RenamefilesPageModel>();
             }
         }
 

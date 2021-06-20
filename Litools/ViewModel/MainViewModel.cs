@@ -1,4 +1,5 @@
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.CommandWpf;
 using Litools.Model;
 
 namespace Litools.ViewModel
@@ -38,5 +39,9 @@ namespace Litools.ViewModel
                 }
             }
         }
+
+        public RelayCommand<string> MenuItemSelectCommand => new RelayCommand<string>(x => {
+            Pu.PageStr = x;
+        });
     }
 }

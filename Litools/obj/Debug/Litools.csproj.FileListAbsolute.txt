@@ -36,3 +36,5 @@ C:\Users\lito\Desktop\Litools\Litools\obj\Debug\View\Pages\M2gPage.g.cs
 C:\Users\lito\Desktop\Litools\Litools\obj\Debug\View\Pages\M2gPage.baml
 C:\Users\lito\Desktop\Litools\Litools\obj\Debug\View\Pages\MenuPage.g.cs
 C:\Users\lito\Desktop\Litools\Litools\obj\Debug\View\Pages\MenuPage.baml
+C:\Users\lito\Desktop\Litools\Litools\obj\Debug\View\Pages\RenamefilesPage.g.cs
+C:\Users\lito\Desktop\Litools\Litools\obj\Debug\View\Pages\RenamefilesPage.baml
